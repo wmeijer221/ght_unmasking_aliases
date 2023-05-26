@@ -1,29 +1,30 @@
 import regex
 
 REX_FAKEUSR = regex.compile(r'\A[A-Z]{8}$')
-REX_EMAIL = regex.compile(r"[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?")
+REX_EMAIL = regex.compile(
+    r"[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?")
 
 
 class Alias:
     def __init__(self,
-                 record_type=None, 
-                 uid=None, 
-                 login=None, 
-                 name=None, 
-                 email=None, 
-                 location=None, 
+                 record_type=None,
+                 uid=None,
+                 login=None,
+                 name=None,
+                 email=None,
+                 location=None,
                  usr_type=None,
                  cr_date=None,
                  gender=None,
-#                 company=None,
+                 #                 company=None,
                  organization=None):
-        
-        self.record_type = record_type 
+
+        self.record_type = record_type
         self.usr_type = usr_type
         self.uid = uid
-        self.login = login #.strip()
+        self.login = login  # .strip()
         self.name = name.strip()
-        
+
         email = email.strip().lower()
         if email == 'none' or not len(email):
             email = None
@@ -39,9 +40,9 @@ class Alias:
                     email.endswith('@example.com') or \
                     email.endswith('@email.com'):
                 email = None
-            
+
         self.email = email
-        
+
         prefix = None
         domain = None
         if email is not None:
@@ -55,16 +56,13 @@ class Alias:
                     domain = None
         self.email_prefix = prefix
         self.email_domain = domain
-        
-        #location = location.strip()
-        #if location == 'N' or not len(location):
+
+        # location = location.strip()
+        # if location == 'N' or not len(location):
         #    location = None
         self.location = location
-        
+
         self.gender = gender
 #        self.company = company
         self.organization = organization
         self.cr_date = cr_date
-        
-
-
