@@ -4,9 +4,6 @@ from itertools import combinations, product
 from collections import Counter
 from alias import Alias
 import os
-# from unicodeManager import UnicodeReader, UnicodeWriter
-# from csv import reader as UnicodeReader
-# from csv import writer as UnicodeWriter
 
 import regex
 fakeusr_rex = regex.compile(r'\A[A-Z]{8}$')
